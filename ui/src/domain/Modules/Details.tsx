@@ -40,6 +40,7 @@ import { VscAzure, VscAzureDevops } from "react-icons/vsc";
 import Markdown from "react-markdown";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import remarkGfm from "remark-gfm";
+import rehypeRaw from "rehype-raw";
 import { unzip } from "unzipit";
 import { ORGANIZATION_ARCHIVE } from "../../config/actionTypes";
 import axiosInstance from "../../config/axiosConfig";
@@ -478,7 +479,7 @@ export const ModuleDetails = ({ organizationName }: Props) => {
                         key: "1",
                         children: (
                           <div className="markdown-body" style={{ backgroundColor: colorBgContainer }}>
-                            <Markdown remarkPlugins={[remarkGfm]}>{markdown}</Markdown>
+                            <Markdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>{markdown}</Markdown>
                           </div>
                         ),
                         className: "markdown-body",
